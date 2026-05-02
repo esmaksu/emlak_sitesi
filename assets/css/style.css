@@ -1,0 +1,244 @@
+/* assets/css/style.css - Siyah ve Turuncu Tema (Emlakhub) */
+
+:root {
+    --primary-color: #ff6b00; /* Canlı Turuncu */
+    --primary-hover: #e65c00;
+    --text-dark: #f8f9fa; /* Koyu temada metin rengi açık olmalı */
+    --text-muted: #a0aab2;
+    --bg-light: #121212; /* Ana siyah arkaplan */
+    --bg-surface: #1e1e1e; /* Kart ve Kutu arkaplanı */
+    --border-color: #333333; /* Koyu gri kenarlık */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light); /* Ayarlardan gelen değer db.php'de eziliyor olabilir ama öncelik CSS olsun diye !important ekleyebiliriz veya ayarlardan rengi güncelleyeceğiz */
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+/* Header */
+.header {
+    background: var(--bg-surface);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header .logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.5px;
+}
+
+.header-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.header-menu a {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.header-menu a:hover {
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff; /* Turuncu üstünde beyaz yazı iyidir */
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: url('../images/hero-bg.jpg') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background-color: #1a1a1a; /* Resim yoksa siyahımsı kalsın */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(18,18,18,1));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    color: #fff;
+}
+.hero h1 span {
+    color: var(--primary-color);
+}
+
+/* Search Box */
+.search-box {
+    background: var(--bg-surface);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+    transform: translateY(-50%);
+    border: 1px solid var(--border-color);
+}
+
+.search-box select, .search-box input {
+    padding: 14px;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    flex: 1;
+    outline: none;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.search-box select:focus, .search-box input:focus {
+    border-color: var(--primary-color);
+}
+
+/* Listings Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Listing Card */
+.card {
+    background: var(--bg-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(255, 107, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.card-img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    background-color: #2a2a2a; 
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-dark);
+}
+
+.card-info {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.card-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.card-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.card-action a {
+    color: var(--primary-color);
+}
+.card-action a:hover {
+    color: var(--primary-hover);
+}
+
+.card-action i:hover {
+    color: #ff3333;
+}
